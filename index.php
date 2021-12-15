@@ -11,8 +11,6 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header('location: login.php');
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -72,9 +70,6 @@ if (isset($_GET['logout'])) {
       <?php endif ?>
     </nav>
 
-    <div class="content">
-    </div>
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-2 bg-light sidebar">
@@ -83,7 +78,7 @@ if (isset($_GET['logout'])) {
               <li class="nav-item sidebar-nav-item">
                 <a
                   class="nav-link sidebar-nav-link"
-                  href="#"
+                  href="index.php"
                   id="statics-nav-btn"
                 >
                   <i class="bi bi-chevron-right"></i>
@@ -93,27 +88,18 @@ if (isset($_GET['logout'])) {
               <li class="nav-item sidebar-nav-item">
                 <a
                   class="nav-link sidebar-nav-link"
-                  href="statics.html"
+                  href="statics.php"
                   id="statics-nav-btn"
                 >
                   <i class="bi bi-chevron-right"></i>
                   <span>Statics</span>
                 </a>
               </li>
+
               <li class="nav-item sidebar-nav-item">
                 <a
                   class="nav-link sidebar-nav-link"
-                  href="profile-home.php"
-                  id="devices-nav-btn"
-                >
-                  <i class="bi bi-chevron-right"></i>
-                  <span>Devices</span>
-                </a>
-              </li>
-              <li class="nav-item sidebar-nav-item">
-                <a
-                  class="nav-link sidebar-nav-link"
-                  href="#"
+                  href="profile.php"
                   id="profile-nav-btn"
                 >
                   <i class="bi bi-chevron-right"></i>
@@ -123,7 +109,7 @@ if (isset($_GET['logout'])) {
               <li class="nav-item sidebar-nav-item">
                 <a
                   class="nav-link sidebar-nav-link"
-                  href="#"
+                  href="setting.php"
                   id="setting-nav-btn"
                 >
                   <i class="bi bi-chevron-right"></i>
@@ -133,167 +119,98 @@ if (isset($_GET['logout'])) {
             </ul>
           </div>
         </div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <h3>Statics</h3>
-          <hr />
-          <div class="table-responsive">
-            <table class="table table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Position</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>Project Manager</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>JS developer</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>Bird</td>
-                  <td>Back-end developer</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Martin</td>
-                  <td>Smith</td>
-                  <td>Back-end developer</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Kate</td>
-                  <td>Mayers</td>
-                  <td>Scrum master</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <h3>Invoice</h3>
-          <hr />
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184382</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
+        <main
+          role="main"
+          onLoad="renderTime();"
+          class="col-md-9 ml-sm-auto col-lg-10 px-4"
+        >
+          <div class="container-fluid">
+            <h3>Home</h3>
+            <hr />
+            <div class="table-responsive">
+              <table class="table table-dark table-stat-home">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Devices Name</th>
+                    <th scope="col">Devices Status</th>
+                    <th scope="col">Usage</th>
+                    <th scope="col">Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Project Manager</td>
+                    <td>asd</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>JS developer</td>
+                    <td>asd</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>Bird</td>
+                    <td>Back-end developer</td>
+                    <td>asd</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Martin</td>
+                    <td>Smith</td>
+                    <td>Back-end developer</td>
+                    <td>asd</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Kate</td>
+                    <td>Mayers</td>
+                    <td>Scrum master</td>
+                    <td>asd</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Usage</h3>
+            <hr />
+            <div id="clockDisplay" class="timebox"></div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Monday</h5>
+                    <p class="card-des">Pattern#1125</p>
+                    <p class="card-text">
+                      Donec nec justo eget felis facilisis fermentum. Aliquam
+                      porttitor mauris sit amet orci. Aenean dignissim
+                      pellentesque felis.
+                    </p>
+                    <a href="#" class="link-primary">Details</a>
+                    <hr />
+                    <button class="btn btn-primary">Select</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184386</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184389</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184391</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h3>Invoice</h3>
-          <hr />
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184382</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184386</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184389</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Invoice #184391</h5>
-                  <p class="card-text">
-                    Donec nec justo eget felis facilisis fermentum. Aliquam
-                    porttitor mauris sit amet orci. Aenean dignissim
-                    pellentesque felis.
-                  </p>
-                  <a href="#" class="btn btn-primary">Print</a>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Monday</h5>
+                    <p class="card-des">Pattern#1125</p>
+                    <p class="card-text">
+                      Donec nec justo eget felis facilisis fermentum. Aliquam
+                      porttitor mauris sit amet orci. Aenean dignissim
+                      pellentesque felis.
+                    </p>
+                    <a href="#" class="link-primary">Details</a>
+                    <hr />
+                    <button class="btn btn-primary">Select</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -310,6 +227,7 @@ if (isset($_GET['logout'])) {
       integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="./js/index.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
