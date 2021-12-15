@@ -1,3 +1,18 @@
+<?php
+  session_start();
+  
+  if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,17 +55,19 @@
         Search
         <i class="bi bi-search"></i>
       </button>
+      <?php if (isset($_SESSION['username'])) : ?>
       <ul class="nav float-end member-nav">
         <li class="nav-item member-nav-item">
-          <a class="nav-link member-nav-link" href="login.html">Login</a>
+          <p class="nav-link member-nav-link"><strong><?php echo $_SESSION['username']; ?></strong></p>
         </li>
         <li class="nav-item member-nav-item">
           <p class="nav-link member-nav-link">|</p>
         </li>
         <li class="nav-item member-nav-item">
-          <a class="nav-link member-nav-link" href="signup.html">Sign Up</a>
+          <p class="nav-link member-nav-link"><strong><a href="index.php?logout='1'" style="color: red;">Logout</a></strong></p>
         </li>
       </ul>
+      <?php endif ?>
     </nav>
 
     <div class="container-fluid">
