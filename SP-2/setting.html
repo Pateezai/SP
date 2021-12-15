@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <!--Boxicons-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <!--Custom Css-->
+    <link rel="stylesheet" href="./css/setting-style.css" />
+
+    <title>Light Up | Home Member</title>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-dark bg-primary flex-md-nowrap p-0 shadow top-nav"
+    >
+      <a class="navbar-brand col-sm-3 col-md-2 head-icon" href="#">
+        <i class="bi bi-lightbulb"></i>
+        <span>Light Up</span>
+      </a>
+      <input
+        type="text"
+        class="form-control form-control-primary search-box"
+        placeholder="Search..."
+      />
+      <button
+        type="button"
+        class="btn btn-light btn-outline-primary search-btn"
+      >
+        Search
+        <i class="bi bi-search"></i>
+      </button>
+      <ul class="nav float-end member-nav">
+        <li class="nav-item member-nav-item">
+          <a class="nav-link member-nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item member-nav-item">
+          <p class="nav-link member-nav-link">|</p>
+        </li>
+        <li class="nav-item member-nav-item">
+          <a class="nav-link member-nav-link" href="signup.html">Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 bg-light sidebar">
+          <div class="left-sidebar">
+            <ul class="nav flex-column sidebar-nav">
+              <li class="nav-item sidebar-nav-item">
+                <a
+                  class="nav-link sidebar-nav-link"
+                  href="index.html"
+                  id="statics-nav-btn"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li class="nav-item sidebar-nav-item">
+                <a
+                  class="nav-link sidebar-nav-link"
+                  href="statics.html"
+                  id="statics-nav-btn"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Statics</span>
+                </a>
+              </li>
+              <li class="nav-item sidebar-nav-item">
+                <a
+                  class="nav-link sidebar-nav-link"
+                  href="profile.html"
+                  id="profile-nav-btn"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li class="nav-item sidebar-nav-item">
+                <a
+                  class="nav-link sidebar-nav-link"
+                  href="setting.html"
+                  id="setting-nav-btn"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                  <span>Setting</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="container-fluid">
+            <h3>Setting</h3>
+            <hr />
+            <div class="row">
+              <!--Color Picker-->
+              <div class="col-6">
+                <!------------------------------------------------>
+                <div class="clp" id="clp">
+                  <!------------------------------------------------>
+                  <div class="color-picker-panel">
+                    <!------------------------------------------------>
+                    <div class="panel-row">
+                      <div class="swatches default-swatches"></div>
+                    </div>
+                    <!------------------------------------------------>
+                    <div class="panel-row">
+                      <!------------------------------------------------>
+                      <div class="spectrum-map">
+                        <!------------------------------------------------>
+                        <button
+                          id="spectrum-cursor"
+                          class="color-cursor"
+                        ></button>
+                        <canvas id="spectrum-canvas"></canvas>
+                        <!------------------------------------------------>
+                      </div>
+                      <!------------------------------------------------>
+                      <div class="hue-map">
+                        <!------------------------------------------------>
+                        <button id="hue-cursor" class="color-cursor"></button>
+                        <canvas id="hue-canvas"></canvas>
+                        <!------------------------------------------------>
+                      </div>
+                      <!------------------------------------------------>
+                    </div>
+                    <!------------------------------------------------>
+                    <div class="panel-row">
+                      <div
+                        id="rgb-fields"
+                        class="field-group value-fields rgb-fields active"
+                      >
+                        <div class="field-group">
+                          <label for="" class="field-label">R:</label>
+                          <input
+                            type="number"
+                            max="255"
+                            min="0"
+                            id="red"
+                            class="field-input rgb-input"
+                          />
+                        </div>
+                        <div class="field-group">
+                          <label for="" class="field-label">G:</label>
+                          <input
+                            type="number"
+                            max="255"
+                            min="0"
+                            id="green"
+                            class="field-input rgb-input"
+                          />
+                        </div>
+                        <div class="field-group">
+                          <label for="" class="field-label">B:</label>
+                          <input
+                            type="number"
+                            max="255"
+                            min="0"
+                            id="blue"
+                            class="field-input rgb-input"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        id="hex-field"
+                        class="field-group value-fields hex-field"
+                      >
+                        <label for="" class="field-label">Hex:</label>
+                        <input type="text" id="hex" class="field-input" />
+                      </div>
+                      <button id="mode-toggle" class="button mode-toggle">
+                        Mode
+                      </button>
+                    </div>
+                    <!------------------------------------------------>
+                    <div class="panel-row">
+                      <!------------------------------------------------>
+                      <h2 class="panel-header">User Colors</h2>
+                      <!------------------------------------------------>
+                      <div
+                        id="user-swatches"
+                        class="swatches custom-swatches"
+                      ></div>
+
+                      <!------------------------------------------------>
+                      <button id="add-swatch" class="button add-swatch">
+                        <span
+                          id="color-indicator"
+                          class="color-indicator"
+                        ></span>
+                        <span>Add to Swatches</span>
+                      </button>
+                      <!------------------------------------------------>
+                    </div>
+                    <!----->
+                  </div>
+                </div>
+              </div>
+              <!--Color Picker-->
+              <div class="col-6">
+                <div class="headcontentmain">
+                  <h3 id="HFC" class="pageheader">COLOR SELECTION</h3>
+                </div>
+
+                <div class="createnewbox"></div>
+
+                <div class="rgbform">
+                  <!------------------------------------------------>
+                  <form>
+                    <!------------------------------------------------>
+                    <div class="row mb-3">
+                      <label for="inputEmail3" class="col-sm-2 col-form-label"
+                        >Name</label
+                      >
+                      <div class="col-sm-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputName3"
+                        />
+                      </div>
+                    </div>
+                    <!------------------------------------------------>
+                    <!--
+                      <div class="panel-row">
+                        <div id="user-swatches" class="swatches custom-swatches"></div>
+                        <button id="add-swatch" class="button add-swatch">
+                        <span id="color-indicator" class="color-indicator"></span>
+                        <span>Add to Swatches</span>
+                      </button>
+                     </div>
+                      -->
+                    <!------------------------------------------------>
+
+                    <!--
+
+                      <div class="col-6">
+                        <button type="button" class="btn btn-primary">
+                          Add
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Clear
+                        </button>
+                      </div>
+
+                      -->
+
+                    <!------------------------------------------------>
+                    <!------------------------------------------------>
+                    <fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">
+                        Style
+                      </legend>
+                      <div class="col-sm-10">
+                        <div id="bit00_3">
+                          <label class="switch">
+                            <input type="checkbox" id="checkbox1" />
+                            <div class="slider round"></div>
+                          </label>
+                          <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDefault"
+                            >Loop</label
+                          >
+                        </div>
+                        <div id="bit00_4">
+                          <label class="switch">
+                            <input type="checkbox" id="checkbox2" />
+                            <div class="slider round"></div>
+                          </label>
+                          <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDefault"
+                            >Blink</label
+                          >
+                        </div>
+                      </div>
+                    </fieldset>
+                    <!------------------------------------------------>
+                    <div class="col-6 sliderbtn">
+                      <label for="customRange1" class="state form-label"
+                        >Brightness:<span id="sliderValue1"></span
+                      ></label>
+                      <input
+                        type="range"
+                        onchange="updateSliderPWM(this)"
+                        min="0"
+                        max="100"
+                        value="100"
+                        class="form-range"
+                        id="slider1 customRange1"
+                      />
+                    </div>
+                    <!------------------------------------------------>
+                    <!--<fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">Type</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check form-switch">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckDefault"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDefault"
+                            >Default switch checkbox input</label
+                          >
+                        </div>
+                        <div class="form-check form-switch">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckDefault"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDefault"
+                            >Default switch checkbox input</label
+                          >
+                        </div>
+                      </div>
+                    </fieldset>-->
+                    <!------------------------------------------------>
+                    <div class="col-9 mb-3">
+                      <label
+                        for="exampleFormControlTextarea1"
+                        class="form-label"
+                        >Description</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                    <!------------------------------------------------>
+                    <button type="submit" class="btn btn-primary">
+                      Create
+                    </button>
+                    <!------------------------------------------------>
+                    <button type="submit" class="btn btn-primary">Clear</button>
+                    <!------------------------------------------------>
+                  </form>
+                  <!------------------------------------------------>
+                </div>
+                <!------------------------------------------------>
+              </div>
+              <!------------------------------------------------>
+            </div>
+            <!------------------------------------------------>
+            <div class="row createNew">
+              <!------------------------------------------------>
+              <div class="col-12">
+                <!------------------------------------------------>
+                <hr />
+                <h3>Setting</h3>
+                <!------------------------------------------------>
+                <div class="pattern-box">
+                  <!------------------------------------------------>
+                  <div class="card">
+                    <h5 class="card-header">#1</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">Pattern Name</h5>
+                      <p class="card-text">A little bit of Pattern Detail</p>
+                      <a href="#" class="btn btn-primary">Select</a>
+                      <a href="#" class="btn btn-primary">Remove</a>
+                    </div>
+                  </div>
+                </div>
+                <!------------------------------------------------>
+              </div>
+              <!------------------------------------------------>
+            </div>
+            <!------------------------------------------------>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!--CUSTOM JS-->
+    <script src="./js/setting.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <!-----Color Picker----->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.3.0/tinycolor.min.js"></script>
+    <!--x-- Color Picker--x-->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
